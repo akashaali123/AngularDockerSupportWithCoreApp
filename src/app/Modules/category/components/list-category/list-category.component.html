@@ -1,0 +1,49 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important; min-height: 100% !important;">
+            <div class="card-body">
+                <div class="row" style="margin-top: 16px;margin-bottom: 16px;">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Category</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" [routerLink]="['/admin/category/create']" class="btn btn-success btn-lg btn">Create</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+                <table class="mb-0 table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                        <tr>
+                            <!-- <th>#</th> -->
+                            <th>Category Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hero of categoryList; let i = index">
+                            <!-- <th scope="row">{{i +1}}</th> -->
+                            <td>{{hero.name}}</td>
+                            <td>
+                                <button class="mb-2 mr-2 btn btn-success" [routerLink]="['/admin/category/edit',hero.categoryId ]">Edit</button>
+                                <!-- <button class="mb-2 mr-2 btn btn-danger" (click)="onDelete(hero.categoryId)">Delete</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

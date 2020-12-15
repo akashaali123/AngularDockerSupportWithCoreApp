@@ -1,0 +1,95 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Edit User</h5>
+                <form class="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                        <div class="alert alert-primary" role="alert">
+                            <strong>{{showSuccessMessage}}</strong>
+                        </div>
+                    </div>
+                    <div *ngIf="showErrorStatus && showErrorStatus == true">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{showErrorMessage}}</strong>
+                        </div>
+                    </div>
+
+                    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                        <p style="color: white">Please Wait. </p>  
+                        </ngx-spinner> 
+
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Name</label>
+                                <input placeholder="Name" type="text" formControlName="Name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }">
+                                <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Name.errors.required">Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Email</label>
+                                <input placeholder="Enter Email" type="text" formControlName="Email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }" disabled>
+                                <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Name.errors.required">Email is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="col-md-6 ">
+                            <div class="position-relative form-group"><label for="exampleEmail11" class="">Minimum Experience</label>
+                                <select formControlName="MinExp" class="mb-2 form-control" [ngClass]="{ 'is-invalid': submitted && f.MinExp.errors }">
+                                  <option value="">Select</option>
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                </select>
+                                <div *ngIf="submitted && f.MinExp.errors" class="invalid-feedback">
+                                    <div *ngIf="f.MinExp.errors.required">Minimum Experience is required</div>
+                                </div>
+
+                            </div>
+                        </div> -->
+
+                        <!-- <div class="col-md-6 ">
+                            <div class="position-relative form-group"><label for="exampleEmail11" class="">Maximum Experience</label>
+                                <select formControlName="MaxExp" class="mb-2 form-control" [ngClass]="{ 'is-invalid': submitted && f.MaxExp.errors }">
+                                  <option value="">Select</option>
+                                  <option value="0">0</option>
+                                  <option value="1">1</option>
+                                  <option value="2">2</option>
+                                  <option value="3">3</option>
+                                  <option value="4">4</option>
+                                  <option value="5">5</option>
+                                  <option value="6">6</option>
+                                  <option value="7">7</option>
+                                  <option value="8">8</option>
+                                </select>
+                                <div *ngIf="submitted && f.MaxExp.errors" class="invalid-feedback">
+                                    <div *ngIf="f.MaxExp.errors.required">Maximum Experience is required</div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <button class="mt-2 btn btn-primary">Submit</button>
+                    <span style="padding: 2px;"></span>
+                    <button class="mt-2 btn btn-danger " routerLink="../../">Cancel</button>
+                    
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

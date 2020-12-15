@@ -1,0 +1,45 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Create Category</h5>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-primary" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                    <p style="color: white">Please Wait. </p>  
+                </ngx-spinner>
+
+
+                <form class="" [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Category Name</label>
+                                <input placeholder="Enter Category Name" formControlName="Name" type="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Name.errors }">
+                                <div *ngIf="submitted && f.Name.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Name.errors.required">Category Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="mt-2 btn btn-primary ">Submit</button>
+                    <span style="padding: 2px;"></span>
+                    <button class="mt-2 btn btn-danger" routerLink="../">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

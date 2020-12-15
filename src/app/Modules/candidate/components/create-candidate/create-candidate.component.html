@@ -1,0 +1,136 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Create Candidate</h5>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-primary" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+                    <p style="color: white">Please Wait. </p>  
+                    </ngx-spinner> 
+
+                <form class="" [formGroup]="candidateForm" (ngSubmit)="onSubmit()">
+                    <!--
+                    <div *ngIf="candidateForm.controls['FirstName'].invalid && (candidateForm.controls['FirstName'].dirty || candidateForm.controls['FirstName'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['FirstName'].errors.required">
+                            User First Name is required.
+                      </div>
+                    </div>
+
+                    <div *ngIf="candidateForm.controls['LastName'].invalid && (candidateForm.controls['LastName'].dirty || candidateForm.controls['LastName'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['LastName'].errors.required">
+                            Last Name is required.
+                      </div>
+                    </div>
+
+
+                    <div *ngIf="candidateForm.controls['email'].errors && (candidateForm.controls['email'].dirty || candidateForm.controls['email'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['email'].errors.required">
+                            Email Address is required.
+                        </div>
+                        <div *ngIf="candidateForm.controls['email'].errors.email">
+                          Email Address must be in a proper format.
+                        </div>
+                    </div>
+
+                    <div *ngIf="candidateForm.controls['CurrentCompany'].invalid && (candidateForm.controls['CurrentCompany'].dirty || candidateForm.controls['CurrentCompany'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['CurrentCompany'].errors.required">
+                            Current Company Name is required.
+                      </div>
+                    </div>
+
+                    <div *ngIf="candidateForm.controls['ExperienceLevelId'].invalid && (candidateForm.controls['ExperienceLevelId'].dirty || candidateForm.controls['ExperienceLevelId'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['ExperienceLevelId'].errors.required">
+                            Experience Level is required.
+                      </div>
+                    </div>
+
+                    <div *ngIf="candidateForm.controls['CategoryId'].invalid && (candidateForm.controls['CategoryId'].dirty || candidateForm.controls['CategoryId'].touched)" class="alert alert-danger">
+                        <div *ngIf="candidateForm.controls['CategoryId'].errors.required">
+                            Category Name is required.
+                      </div>
+                    </div> -->
+
+
+
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label>First Name</label><input placeholder="Enter First Name" formControlName="FirstName" type="text" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }">
+                                <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group "><label>Last Name</label><input placeholder="Enter Last Name" formControlName="LastName" type="text" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }">
+                                <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                                    <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group "><label>Email</label><input placeholder="Enter Email " formControlName="email" type="text" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group ">
+                                <label>Current Company</label>
+                                <input placeholder="Enter Current Company Name " formControlName="CurrentCompany" type="text" class="form-control " [ngClass]="{ 'is-invalid': submitted && f.CurrentCompany.errors }">
+                                <div *ngIf="submitted && f.CurrentCompany.errors" class="invalid-feedback">
+                                    <div *ngIf="f.CurrentCompany.errors.required">Current Company is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group "><label>Experience Level</label>
+                                <select class="mb-2 form-control" aria-placeholder="Enter Tech Stack eg MERN/MEAN/LAMP" formControlName="ExperienceLevelId" [ngClass]="{ 'is-invalid': submitted && f.ExperienceLevelId.errors }">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let hero of ExperienceLevelList;" value={{hero.id}}> {{hero.name}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.ExperienceLevelId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ExperienceLevelId.errors.required">Current Company is required</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group "><label>Category</label>
+                                <select class="mb-2 form-control" aria-placeholder="Enter Tech Stack eg MERN/MEAN/LAMP" formControlName="CategoryId" [ngClass]="{ 'is-invalid': submitted && f.CategoryId.errors }">
+                                  <option value="">Select</option>
+                                  <option *ngFor="let hero of categoryList; let i = index" value={{hero.categoryId}}>{{hero.name}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.CategoryId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.CategoryId.errors.required">Category Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-2 btn btn-primary ">Submit</button>
+                    <span style="padding: 2px;"></span>
+                    <button class="mt-2 btn btn-danger" value="cancel" routerLink="../">Cancel</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

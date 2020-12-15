@@ -1,0 +1,93 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important; min-height: 100% !important;">
+            <div class="card-body">
+                <div class="row" style="margin-top: 16px;margin-bottom: 16px;">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Questions</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" [routerLink]="['/admin/questions/create']" class="btn btn-success btn-lg btn">Create</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                    <p style="color: white">Please Wait. </p>
+                </ngx-spinner>
+
+                <p-table #dt [columns]="cols" [value]="QuestionsList" [paginator]="true" [rows]="10">
+                    <ng-template pTemplate="caption">
+                        <div style="text-align: right">
+                            <i class="pi pi-search" style="margin:4px 4px 0 0"></i>
+                            <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header" let-columns>
+                        <tr>
+                            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                                {{col.header}}
+                                <p-sortIcon [field]="col.field"></p-sortIcon>
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                                <input *ngSwitchCase="'question'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                                <div *ngIf="role=='admin'">
+                                    <p-dropdown *ngSwitchCase="'category'" [options]="mycatList" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                                </div>
+                                <p-dropdown *ngSwitchCase="'experienceLevel'" [options]="expList" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                                <div *ngIf="role=='admin'">
+                                    <p-dropdown *ngSwitchCase="'createdName'" [options]="userEmail" [style]="{'width':'100%'}" (onChange)="dt.filter($event.value, col.field, 'equals')"></p-dropdown>
+                                </div>
+
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <!-- <ng-template pTemplate="body" let-rowData let-columns="columns">
+                        <tr>
+                            <td *ngFor="let col of columns" [innerHTML]="rowData[col.field]| slice:0:100">
+                            </td>
+                            <td>
+                                <div class="btn-toolbar">
+                                    <button class="mb-2 mr-2 btn btn-success">Edit</button>
+                                    <button class="mb-2 mr-2 btn btn-danger">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template> -->
+                    <ng-template pTemplate="body" let-car>
+                        <tr>
+                            <td [innerHTML]="car.question | slice:0:40"></td>
+                            <td>{{car.category}}</td>
+                            <td>{{car.experienceLevel}}</td>
+                            <td>{{car.createdName}}</td>
+                            <td>
+                                <div class="btn-toolbar">
+                                    <button type="button" class="mb-2 mr-2 btn btn-success" *ngIf="role == 'admin'" [routerLink]="['/admin/questions/edit',car.questionId]">Edit</button>
+                                    <button type="button" class="mb-2 mr-2 btn btn-success" *ngIf="role == 'contributor'" [routerLink]="['/contributor/edit',car.questionId]">Edit</button>
+                                    <!-- <button class="mb-2 mr-2 btn btn-danger">Delete</button> -->
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+        <p style="color: white">Please Wait. </p>
+    </ngx-spinner>
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <div class="alert alert-danger" role="alert">
+                    <strong>Test Will Start After Press Start Test Button</strong>
+                </div>
+
+                <h5 class="card-title">Test Instructions</h5>
+                <ol>
+                    <li> Any mobile phone on a desk/on your person; which rings, vibrates or sounds an alarm during an examination, is a breach of our academic misconduct regulation, and will be reported. This could lead to you having to resit the examination.</li>
+                    <h4>Mobile phones must be switched off and placed face down under your desk or chair.</h4>
+                    <li>
+                        Materials permitted on your desk:
+                        <ul>
+                            <li>Student ID Card (this is essential)</li>
+                            <li>Pens / Pencils / / Writing materials/Ruler / Eraser / Pencil Sharpener</li>
+                            <li>Clear plastic bag/case </li>
+                            <li>Bottled water & small confectionery items</li>
+                            <li>Other materials or equipment (e.g. Calculators) ONLY if specified for a particular examination.</li>
+                        </ul>
+                    </li>
+                    <li>Material NOT permitted on you or your desk:
+                        <ul>
+                            <li>Notes on papers or Post it Notes</li>
+                            <li>Drawings / Graphs / Books</li>
+                            <li>Notes written on clothing / hands / arms or other areas of the body</li>
+                            <li>Fizzy Drinks / Food for example crisps, sandwiches</li>
+                            <li>Mobile Phones / PDAs / IPods / MP3 / Bluetooth Devices and Headphones and any other electronic devices</li>
+                            <li>Coats / bags /scarves / hats – place at the front of the room </li>
+                        </ul>
+                    </li>
+                    <li>If you are unsure about any article ask the Invigilator immediately - if you have brought to the examination room any article which is not permitted, it must be deposited at the front of the examination room as directed by the Invigilator
+                        before you go to your desk.</li>
+                    <li>You must not: Attempt to speak to, or have any communication with, other candidates during the examination. Smoke during examinations, nor behave in a manner likely to disturb other candidates. Remove any (used or unused) examination
+                        materials from the examination room, including any rough notes which must be made within an examination booklet and crossed out. Start writing nor make any notes until instructed by the Invigilator. Any writing before the examination
+                        begins is strictly prohibited.</li>
+                </ol>
+                <div class="pull-right">
+                    <button class="btn btn-primary" (click)="navigateToTest()" type="button">Start test</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

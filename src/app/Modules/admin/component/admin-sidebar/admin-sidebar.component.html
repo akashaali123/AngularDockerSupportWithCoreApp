@@ -1,0 +1,78 @@
+<ul class="vertical-nav-menu">
+    <div *ngIf="userRole == 'SuperAdmin' || userRole == 'admin'">
+        <li class="app-sidebar__heading">Admin Panel</li>
+        <li>
+            <a routerLink="/admin" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-rocket"></i> Dashboard
+            </a>
+        </li>
+        <li class="app-sidebar__heading"></li>
+
+
+        <li>
+            <a routerLink="/admin/createtest" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-timer"></i> Assign Test
+                <i class="metismenu-state-icon caret-left"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/admin/userlist" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-add-user"></i> User
+                <i class="metismenu-state-icon caret-left"></i>
+            </a>
+        </li>
+
+        <li>
+            <a routerLink="/admin/candidate/list" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-users"></i> Candidates
+                <i class="metismenu-state-icon  caret-left"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/admin/category/list" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-ribbon"></i> Category
+                <i class="metismenu-state-icon  caret-left"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/admin/questions/list" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-copy-file"></i> Questions
+                <i class="metismenu-state-icon  caret-left"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/admin/experiencelevel/list" [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-diamond"></i> Experience Level
+                <i class="metismenu-state-icon  caret-left"></i>
+            </a>
+        </li>
+
+        <li>
+            <a routerLink="/admin/listresults"  [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-study"></i> Test Results
+                <i class="metismenu-state-icon caret-left"></i>
+            </a>
+        </li>
+    </div>
+    <div *ngIf="userRole == 'candidate'">
+        <li class="app-sidebar__heading">Dashboard</li>
+        <li>
+            <a routerLink="/candidate/"  [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-car"></i> Candidate Test
+                <i class="metismenu-state-icon caret-left"></i>
+            </a>
+        </li>
+
+    </div>
+
+    <div *ngIf="userRole == 'contributor'">
+        <li class="app-sidebar__heading">Dashboard</li>
+        <li>
+            <a routerLink="/contributor/"  [routerLinkActive]="['mm-active']">
+                <i class="metismenu-icon pe-7s-car"></i>Questions
+                <i class="metismenu-state-icon caret-left"></i>
+            </a>
+        </li>
+
+    </div>
+</ul>

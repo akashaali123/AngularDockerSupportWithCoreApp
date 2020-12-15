@@ -1,0 +1,6 @@
+{
+    "explorer.compactFolders": false,
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "editor.mouseWheelZoom": true,
+    "debug.console.fontFamily": "Ubuntu"
+}

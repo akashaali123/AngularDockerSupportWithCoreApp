@@ -1,0 +1,18 @@
+.imagebackground {
+    background: scroll center url('https://images.unsplash.com/photo-1574296485283-05828992d106');
+    background-size: cover;
+    height: 100% !important;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .imagebackground {
+        height: 50% !important;
+    }
+}

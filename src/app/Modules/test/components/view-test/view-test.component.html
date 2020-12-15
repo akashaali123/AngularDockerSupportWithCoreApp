@@ -1,0 +1,112 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+        <p style="color: white">Please Wait. </p>
+    </ngx-spinner>
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <form class="" [formGroup]="testForm">
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="card-title">Test Details</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="float-right">
+                                <button class="btn btn-primary" [routerLink]="['/admin/viewquestions/',testId]" *ngIf="role == 'admin'" routerLinkActive="router-link-active" type="button">View Questions</button>
+                                <button class="btn btn-primary" [routerLink]="['/verifier/viewquestions/',testId]" *ngIf="role == 'verifier'" routerLinkActive="router-link-active" type="button">View Questions</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Candidate Name</label>
+                                <input formControlName="candidateName" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Total Question </label>
+                                <input formControlName="totalQuestion" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Category Name</label>
+                                <input formControlName="category" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Attempted Question</label>
+                                <input formControlName="attemptedQuestion" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Experience level</label>
+                                <input formControlName="experienceLevel" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Skipped Question</label>
+                                <input formControlName="skippedQuestion" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Test date</label>
+                                <input formControlName="testDate" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Correct Questions</label>
+                                <input formControlName="correctAnswer" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Duration</label>
+                                <input formControlName="duration" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Wrong Question</label>
+                                <input formControlName="wrongQuestion" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Test Status</label>
+                                <input formControlName="testStatus" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Test Percentage</label>
+                                <input formControlName="percentage" type="text" class="form-control" disabled>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

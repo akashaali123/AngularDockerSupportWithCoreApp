@@ -1,0 +1,61 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login100-form validate-form">
+
+
+
+    <div style="width: 60%;margin: auto;">
+
+        <span class="login100-form-title p-b-34">
+        <h1>Welcome to Arpatech</h1>
+        </span>
+
+
+        <div class="alert alert-danger" *ngIf="submitted && f.username.errors" role="alert" style="width: 100%;">
+            <div *ngIf="f.username.errors.required">Email Address is required</div>
+            <div *ngIf="f.username.errors.email">Must be an Email Address</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="submitted && f.password.errors" role="alert" style="width: 100%;">
+            <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="geterror()" role="alert" style="width: 100%;">
+            <div>Email Address or Password is Incorrect</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="usererror" role="alert" style="width: 100%;">
+            <div>Email Address does not exist </div>
+        </div>
+        <!-- usererror -->
+        <!-- *ngIf="geterror()" -->
+
+        <span class="login100-form-title p-b-34">
+          Account Login
+        </span>
+
+        <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" style="width: 100%;" data-validate="Type user name ">
+            <input id="first-name " class="input100 " formControlName="username" type="text " placeholder="User name " [ngClass]="{ 'is-invalid': submitted && f.username.errors } " />
+            <span class="focus-input100 "></span>
+        </div>
+
+
+
+
+        <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20 " style="width: 100%;" data-validate="Type password ">
+            <input class="input100" type="password" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors } " />
+            <span class="focus-input100 "></span>
+        </div>
+        <div class="container-login100-form-btn ">
+            <button type="submit " class="login100-form-btn ">
+              Sign in
+            </button>
+        </div>
+
+
+    </div>
+
+    <div class="w-full text-center p-t-27 p-b-239 ">
+        <span class="txt1 ">
+      Forgot
+    </span>
+        <a routerLink="/forgotpassword" class="txt2 ">
+      User name / password?
+    </a>
+    </div>
+</form>

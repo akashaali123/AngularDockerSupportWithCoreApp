@@ -1,0 +1,11 @@
+container configuration in Docker file
+
+Listen port on 8081
+
+create image for 
+
+docker build -t akasha/angular-app:latest
+
+configure this image in docker compose file in .net core app to start container with single command
+
+change enviroment route if needed

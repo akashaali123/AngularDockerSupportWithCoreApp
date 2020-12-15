@@ -1,0 +1,114 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Edit Question</h5>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-primary" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                    <p style="color: white">Please Wait. </p>
+                </ngx-spinner>
+
+
+
+                <form class="" [formGroup]="questionsForm" (ngSubmit)="onSubmit()">
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <label>Description</label>
+                                <ckeditor [editor]="Editor" data="<p>Enter your question here</p>" placeholder="Enter Question Description" formControlName="Description" type="text" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }" (ready)="onReady($event)"></ckeditor>
+
+                                <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+                                    <div *ngIf="f.Description.errors.required">Question Description is required</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row ">
+                        <div class="col-md-6 ">
+
+                            <div class="position-relative form-group "><label>Category</label>
+                                <select class="mb-2 form-control" aria-placeholder="Enter Tech Stack eg MERN/MEAN/LAMP" formControlName="CategoryId" [ngClass]="{ 'is-invalid': submitted && f.CategoryId.errors }">
+                              <option selected="selected" value="">Select</option>
+                              <option *ngFor="let hero of categoryList;" value={{hero.categoryId}}> {{hero.name}}</option>
+                              </select>
+                                <div *ngIf="submitted && f.CategoryId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.CategoryId.errors.required">Category Name is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group "><label>Experience Level</label>
+                                <select class="mb-2 form-control" aria-placeholder="Enter Tech Stack eg MERN/MEAN/LAMP" formControlName="ExperienceLevelId" [ngClass]="{ 'is-invalid': submitted && f.ExperienceLevelId.errors }">
+                              <option selected="selected" value="">Select</option>
+                              <option *ngFor="let hero of ExperienceLevelList;" value={{hero.id}}> {{hero.name}}</option>
+                            </select>
+                                <div *ngIf="submitted && f.ExperienceLevelId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ExperienceLevelId.errors.required">Experience Level is required</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 ">
+                            <div class="position-relative form-group "><label>Time in Minutes Per Question</label>
+                                <select class="mb-2 form-control" formControlName="Time">
+                                  <option value="0">Select</option>
+                                  <option value="2">2 Minute</option>
+                                  <option value="4">4 Minute</option>
+                                  <option value="6">6 Minute</option>
+                                  <option value="8">8 Minute</option>
+                                  <option value="10">10 Minute</option>
+                                </select>
+
+                                <div *ngIf="submitted && f.ExperienceLevelId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.ExperienceLevelId.errors.required">Experience Level is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <h5 class="card-title">Create Options</h5>
+                        <div class="col-md-12">
+                            <div *ngFor="let ticket of t.controls; let i = index" class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div [formGroup]="ticket" class="form-row">
+                                        <div class="form-group col-1">
+                                            <label>Option </label>
+                                            <input type="checkbox" formControlName="IsCorrect" class="form-control" [ngClass]="{ 'is-invalid': submitted && ticket.errors }" />
+                                            <div *ngIf="submitted && ticket.errors" class="invalid-feedback">
+                                                <div *ngIf="ticket.errors.required">Category Name is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-11">
+                                            <label>Option Description</label>
+                                            <input type="text" formControlName="OptionDescription" class="form-control" [ngClass]="{ 'is-invalid': submitted && ticket.errors }" />
+                                            <div *ngIf="submitted && ticket.errors" class="invalid-feedback">
+                                                <div *ngIf="ticket.errors.required">Category Name is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-2 btn btn-primary ">Submit</button>
+                    <span style="padding: 2px;"></span>
+                    <button class="mt-2 btn btn-danger" value="cancel" routerLink="../../">Cancel</button>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

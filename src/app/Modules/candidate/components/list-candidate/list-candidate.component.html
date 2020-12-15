@@ -1,0 +1,63 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important; min-height: 100% !important;">
+            <div class="card-body">
+                <div class="row" style="margin-top: 16px;margin-bottom: 16px;">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Candidate</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end">
+                            <button type="button" [routerLink]="['/admin/candidate/create']" class="btn btn-success btn-lg btn">Create</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+                </div>
+
+                <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                    <p style="color: white">Please Wait. </p>
+                </ngx-spinner>
+
+
+
+
+                <table class="row-border hover mb-0 table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                        <tr>
+                            <!-- <th>#</th> -->
+                            <th>First Name</th>
+                            <th>Email</th>
+                            <th>Current Company</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hero of candidateList; let i = index">
+                            <!-- <th scope="row">{{i + 1}}</th> -->
+                            <td>{{hero.firstName | titlecase}} {{hero.lastName | titlecase}}</td>
+                            <td>{{hero.email | lowercase}}</td>
+                            <td>{{hero.currentCompany | titlecase}}</td>
+                            <td>
+                                <button class="mb-2 mr-2 btn btn-success" [routerLink]="['/admin/candidate/edit',hero.candidateId ]" routerLinkActive="router-link-active" style="color: white !important;">Edit</button>
+                                <!-- <button class="mb-2 mr-2 btn btn-danger" (click)="onDelete(hero.candidateId)">Delete</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

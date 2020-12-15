@@ -1,0 +1,83 @@
+<div class="app-main__inner" style="height: 100% !important; ">
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+        <p style="color: white">Please Wait. </p>
+    </ngx-spinner>
+
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Assign Test</h5>
+
+                <form class="" [formGroup]="startTestForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-row">
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group">
+                                <label for="exampleEmail11" class="">Candidate Name</label>
+                                <select class="mb-2 form-control" formControlName="CandidateId" [ngClass]="{ 'is-invalid': submitted && f.CandidateId.errors }">
+                                  <option value=""> Select</option>
+                                  <option *ngFor="let hero of candidateList; let i = index" value={{hero.id}}>
+                                    {{ hero.nameFormat | titlecase  }}
+                                  </option>
+                                  <div *ngIf="submitted && f.CandidateId.errors" class="invalid-feedback">
+                                    <div *ngIf="f.CandidateId.errors.required">Candidate Name is required</div>
+                                  </div>
+
+                              </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 ">
+                            <div class="position-relative form-group"><label for="exampleEmail11" class="">Number of Questions</label>
+                                <select class="mb-2 form-control" formControlName="numberOfQuestion" [ngClass]="{ 'is-invalid': submitted && f.numberOfQuestion.errors }">
+                                <option value="">Select</option>
+                                <option value={{hero*5}} *ngFor="let hero of [3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 ]; let i = index" > {{hero*5}}</option>
+                                </select>
+                                <div *ngIf="submitted && f.numberOfQuestion.errors" class="invalid-feedback">
+                                    <div *ngIf="f.numberOfQuestion.errors.required">Number Of Question is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="position-relative form-group"><label for="exampleEmail11" class="">Test Type </label>
+                                <select class="mb-2 form-control" formControlName="testType" (change)="onChange($event.target.value)" [ngClass]="{ 'is-invalid': submitted && f.testType.errors }">
+                                <option value="">Select</option>
+                                <option value="false">Per Questions</option>
+                                <option value="true">Per Test</option>
+                                </select>
+                                <div *ngIf="submitted && f.testType.errors" class="invalid-feedback">
+                                    <div *ngIf="f.testType.errors.required">Number Of Question is required</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6" *ngIf="showTime">
+                            <div class="position-relative form-group"><label for="exampleEmail11" class="">Total Test Time </label>
+                                <select class="mb-2 form-control" formControlName="testTime">
+                                <option value="0">Select</option>
+                                <option value="10">10 Minutes</option>
+                                <option value="15">15 Minutes</option>
+                                <option value="20">20 Minutes</option>
+                                <option value="30">30 Minutes</option>
+                                <option value="45">45 Minutes</option>
+                                <option value="60">60 Minutes</option>
+                                <option value="90">90 Minutes</option>
+                                <option value="120">120 Minutes</option>
+                                </select>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="mt-2 btn btn-primary ">Submit</button>
+                    <span style="padding: 2px;"></span>
+                    <button class="mt-2 btn btn-danger " routerLink="../">Cancel</button>
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

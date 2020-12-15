@@ -1,0 +1,24 @@
+    .p-b-239 {
+        padding-bottom: 80px !important;
+    }
+    
+    .login100-form {
+        width: 100% !important;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 10%;
+    }
+    
+    @media (max-width: 576px) {
+        .login100-form {
+            padding-top: 10%;
+        }
+    }
+    
+    .invalid-feedback {
+        display: block !important;
+    }

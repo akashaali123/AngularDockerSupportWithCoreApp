@@ -1,0 +1,57 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+
+    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+        <p style="color: white">Please Wait. </p>  
+    </ngx-spinner>
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important;">
+            <div class="card-body">
+                <h5 class="card-title">Online Quiz</h5>
+                <br>
+                <div *ngIf="getLoading(); else elseBlock">Loading...</div>
+                <ng-template #elseBlock>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="pull-right" style="color: red; font-weight: bold;">
+                                <h2>Time Left : {{minutes | number:'2.0'}}:{{seconds | number:'2.0'}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="position-relative form-group">
+                                <h5>
+                                    <div style="color: black;">Question # {{questionCount +1}}) </div>
+                                    <hr>
+                                    <span [innerHTML]=getQuestion() style="color: black;"></span>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form-row ">
+                        <div class="col-md-12">
+                            <div *ngFor="let item of options;" class="list-group list-group-flush">
+                                <div class="form-check">
+                                    <h6>
+                                        <input class="form-check-input" type="checkbox" [(ngModel)]="item.selected" value={{item.optionId}}>
+                                        <p style="color: black;">{{item.option}}</p>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-danger btn-lg" style="margin-right: 8px;" *ngIf="questionList.length != questionCount+1 " (click)="onSubmit()">Skip Question</button>
+                        <button class="btn btn-primary btn-lg" (click)="onSubmit()">{{buttonText}}</button>
+                    </div>
+
+                </ng-template>
+
+            </div>
+        </div>
+    </div>
+</div>

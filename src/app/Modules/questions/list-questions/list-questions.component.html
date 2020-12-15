@@ -1,0 +1,61 @@
+<div class="app-main__inner" style="height: 100% !important;">
+
+    <div class="row" style="width: 100% !important;">
+        <div class="main-card mb-3 card" style="width: 100% !important; min-height: 100% !important;">
+            <div class="card-body">
+                <div class="row" style="margin-top: 16px;margin-bottom: 16px;">
+                    <div class="col-md-6">
+                        <h5 class="card-title">Questions</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex justify-content-end" *ngIf="role == 'contributor'">
+                            <button type="button" [routerLink]="['/contributor/create']" class="btn btn-success btn-lg btn">Create</button>
+                        </div>
+                        <div class="d-flex justify-content-end" *ngIf="role == 'admin'">
+                            <button type="button" [routerLink]="['/admin/questions/create']" class="btn btn-success btn-lg btn">Create</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showSuccessStatus && showSuccessStatus == true">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>{{showSuccessMessage}}</strong>
+                    </div>
+                </div>
+
+                <div *ngIf="showErrorStatus && showErrorStatus == true">
+                    <div class="alert alert-warning" role="alert">
+                        <strong>{{showErrorMessage}}</strong>
+                    </div>
+
+                    <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+                        <p style="color: white">Please Wait. </p>
+                    </ngx-spinner>
+
+
+                </div>
+                <table class="mb-0 table" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                    <thead>
+                        <tr>
+                            <!-- <th>#</th>  -->
+                            <th>Question Description</th>
+                            <th>Created By</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let hero of QuestionsList; let i = index">
+                            <!-- <th scope="row">{{i +1}}</th> -->
+                            <td [innerHTML]="hero.question | slice:0:40"></td>
+                            <td>{{hero.createdName}}</td>
+                            <td>
+                                <button type="button" class="mb-2 mr-2 btn btn-success" *ngIf="role == 'admin'" [routerLink]="['/admin/questions/edit',hero.questionId]">Edit</button>
+                                <button type="button" class="mb-2 mr-2 btn btn-success" *ngIf="role == 'contributor'" [routerLink]="['/contributor/edit',hero.questionId]">Edit</button>
+                                <!-- <button class="mb-2 mr-2 btn btn-danger" (click)="delete(hero.questionId)">Delete</button> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
